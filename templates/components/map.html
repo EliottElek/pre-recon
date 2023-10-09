@@ -1,0 +1,51 @@
+{% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'plugins/j-map/jquery-jvectormap.css' %}"
+/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="{% static 'plugins/j-map/jquery-jvectormap.min.js' %}"></script>
+<script src="{% static 'plugins/j-map/maps/jquery-jvectormap-world-mill-en.js' %}"></script>
+
+<div class="overflow-hidden rounded-lg">
+  <div id="map" style="height: 500px; width: 100%"></div>
+</div>
+<script>
+  var countriesData = {"{{ip_infos.location_country_code}}": 1 }
+
+    {% for sub in subdomains.all %}
+    countriesData["{{sub.ip_iso}}"]=  countriesData["{{sub.ip_iso}}"]+1 ||1,
+  {% endfor %}
+
+  console.log(countriesData)
+  $("#map").vectorMap({
+    map: "world_mill_en",
+    hoverOpacity: 0.7,
+    hoverColor: false,
+    regionStyle: {
+      initial: {
+        fill: "#d4dadd",
+      },
+    },
+    backgroundColor: "transparent",
+    series: {
+      regions: [
+        {
+          values: countriesData,
+          scale: ["#C8EEFF", "#0071A4"],
+          normalizeFunction: "polynomial",
+        },
+      ],
+    },
+    onRegionTipShow: function (e, el, code) {
+      if (code in countriesData) {
+        el.html(el.html() + " (Total Assets : " + countriesData[code] + ")");
+      } else {
+        el.html(el.html() + " (Total Assets : 0)");
+      }
+    },
+  });
+</script>

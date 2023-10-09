@@ -1,0 +1,98 @@
+<div
+  style="max-height: 360px; margin-top: 10px; max-width: 100%"
+  class="w-full bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-y-auto"
+>
+  <ul
+    class="p-4 text-gray-900  dark:text-white"
+  >
+    <li><strong>Created:</strong> {{ whois.created }}</li>
+    <li><strong>Expires:</strong> {{ whois.expires }}</li>
+    <li><strong>Updated:</strong> {{ whois.updated }}</li>
+    <li><strong>Registrar:</strong> {{ whois.registrar }}</li>
+    <li><strong>DNSSEC:</strong> {{ whois.dnssec }}</li>
+    <li>
+      <strong>Status:</strong>
+      <ul class="ml-4 list-disc">
+        {% for status in whois.status %}
+        <li>{{ status }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>
+      <strong>Registrant Name:</strong>
+      {{ whois.registrant_name }}
+    </li>
+    <li>
+      <strong>Registrant Organization:</strong>
+      {{ whois.registrant_organization }}
+    </li>
+    <li>
+      <strong>Registrant Address:</strong>
+      {{ whois.registrant_address }}
+    </li>
+    <li>
+      <strong>Registrant City:</strong>
+      {{ whois.registrant_city }}
+    </li>
+    <li>
+      <strong>Registrant State:</strong>
+      {{ whois.registrant_state }}
+    </li>
+    <li>
+      <strong>Registrant Zipcode:</strong>
+      {{ whois.registrant_zipcode }}
+    </li>
+    <li>
+      <strong>Registrant Country:</strong>
+      {{whois.registrant_country }}
+    </li>
+    <li>
+      <strong>Registrant Email:</strong>
+      {{ whois.registrant_email}}
+    </li>
+    <li>
+      <strong>Registrant Phone:</strong>
+      {{ whois.registrant_phone}}
+    </li>
+    <li>
+      <strong>Registrant Fax:</strong>
+      {{ whois.registrant_fax }}
+    </li>
+    <li>
+      <strong>Name servers:</strong>
+      <ul class="ml-4 list-disc">
+        {% for server in whois.name_servers %}
+        <li>{{ server }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li><strong>Admin Name:</strong> {{ whois.admin_name }}</li>
+    <li><strong>Admin ID:</strong> {{ whois.admin_id }}</li>
+    <li>
+      <strong>Admin Organization:</strong>
+      {{whois.admin_organization }}
+    </li>
+    <li><strong>Admin City:</strong> {{ whois.admin_city }}</li>
+    <li><strong>Admin Address:</strong> {{ whois.admin_address }}</li>
+    <li><strong>Admin State:</strong> {{ whois.admin_state }}</li>
+    <li><strong>Admin Zipcode:</strong> {{ whois.admin_zipcode }}</li>
+    <li><strong>Admin Country:</strong> {{ whois.admin_country }}</li>
+    <li><strong>Admin Phone:</strong> {{ whois.admin_phone }}</li>
+    <li><strong>Admin Fax:</strong> {{ whois.admin_fax }}</li>
+    <li><strong>Admin Email:</strong> {{ whois.admin_email }}</li>
+    <li><strong>Tech Name:</strong> {{ whois.tech_name }}</li>
+    <li><strong>Tech ID:</strong> {{ whois.tech_id }}</li>
+    <li>
+      <strong>Tech Organization:</strong>
+      {{ whois.tech_organization}}
+    </li>
+    <li><strong>Tech City:</strong> {{ whois.tech_city }}</li>
+    <li><strong>Tech Address:</strong> {{ whois.tech_address }}</li>
+    <li><strong>Tech State:</strong> {{ whois.tech_state }}</li>
+    <li><strong>Tech Zipcode:</strong> {{ whois.tech_zipcode }}</li>
+    <li><strong>Tech Country:</strong> {{ whois.tech_country }}</li>
+    <li><strong>Tech Phone:</strong> {{ whois.tech_phone }}</li>
+    <li><strong>Tech Fax:</strong> {{ whois.tech_fax }}</li>
+    <li><strong>Tech Email:</strong> {{ whois.tech_email }}</li>
+  </ul>
+</div>

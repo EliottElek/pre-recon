@@ -1,0 +1,321 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Rocket Django - Styled with Tailwind/Flowbite AppSeed</title>
+    <meta
+      name="description"
+      content="Open-Source Django starter styled with Tailwind/Flowbite - Actively supported by AppSeed."
+    />
+
+    <link
+      rel="canonical"
+      href="https://github.com/app-generator/rocket-django"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://flowbite-admin-dashboard.vercel.app/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://flowbite-admin-dashboard.vercel.app/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://flowbite-admin-dashboard.vercel.app/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://flowbite-admin-dashboard.vercel.app/favicon.ico"
+    />
+    <link
+      rel="manifest"
+      href="https://flowbite-admin-dashboard.vercel.app/site.webmanifest"
+    />
+    <link
+      rel="mask-icon"
+      href="https://flowbite-admin-dashboard.vercel.app/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta
+      name="twitter:title"
+      content="Tailwind CSS Admin Dashboard - Flowbite"
+    />
+    <meta
+      name="twitter:description"
+      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more"
+    />
+    <meta
+      name="twitter:image"
+      content="https://github.com/app-generator/rocket-django"
+    />
+    <!-- Facebook -->
+    <meta
+      property="og:url"
+      content="https://github.com/app-generator/rocket-django"
+    />
+    <meta
+      property="og:title"
+      content="Tailwind CSS Admin Dashboard - Flowbite"
+    />
+    <meta
+      property="og:description"
+      content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://flowbite-admin-dashboard.vercel.app/images/og-image.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+
+    <link rel="stylesheet" href="{% static 'dist/css/output.css' %}" />
+    <script>
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+
+  <body class="bg-gray-50 dark:bg-gray-900">
+    {% include 'includes/navbar.html' %}
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+      {% include 'includes/sidebar.html' %}
+      <div
+        class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90"
+        id="sidebarBackdrop"
+      ></div>
+
+      <div
+        id="main-content"
+        class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"
+      >
+        <main>
+          <div class="px-4 pt-4 grid grid-cols-2 gap-4">
+            <div class="h-full">
+              <div
+                class="p-4 h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+              >
+                <!-- Card header -->
+                <div class="items-center justify-between lg:flex">
+                  <div class="mb-4 lg:mb-0">
+                    <h3
+                      style="color: rgb(26 86 219); text-decoration: underline"
+                      class="mb-2 text-2xl font-bold text-gray-900 dark:text-white"
+                    >
+                      {{ target.domain_name }}
+                    </h3>
+                    <h4
+                      style="color: rgb(26 86 219)"
+                      class="mb-2 text-lg font-bold text-gray-900 dark:text-white"
+                    >
+                      {{ target.ip_address }}
+                    </h4>
+                    <span
+                      class="text-base font-normal text-gray-500 dark:text-gray-400"
+                      >This is the list of scans on this target.</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="my-4 flex flex-col items-center justify-center grow"
+                >
+                  {% if not scans %}
+                  <div
+                    style="border: dashed 1.5px lightgray"
+                    class="text-center m-4 border border-gray-500 dark:border-gray-200 rounded-lg border-dashed flex flex-col items-center justify-center grow w-full"
+                  >
+                    <h3
+                      class="mt-2 text- font-semibold text-gray-900 dark:text-gray-200"
+                    >
+                      No scan
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      Get started by initiating a new scan.
+                    </p>
+                    <div class="mt-6">
+                      <a href="/new-scan">
+                        <button
+                          type="button"
+                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          New scan
+                        </button></a
+                      >
+                    </div>
+                  </div>
+                  {% else %}
+                  <div
+                    class="overflow-hidden w-full grow sm:rounded-lg border border-gray-200 dark:border-gray-700"
+                  >
+                    <table
+                      class="w-full divide-y divide-gray-200 dark:divide-gray-600"
+                    >
+                      <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                          <th
+                            scope="col"
+                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                          >
+                            Target
+                          </th>
+                          <th
+                            scope="col"
+                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                          >
+                            Date & Time
+                          </th>
+                          <th
+                            scope="col"
+                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                          >
+                            Status
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="bg-white w-full dark:bg-gray-800">
+                        {% for scan in scans %}
+
+                        <tr
+                          class="hover:bg-gray-100 overflow-x-auto dark:hover:bg-gray-700"
+                        >
+                          <td
+                            class="p-4 font-bold text-sm text-gray-900 whitespace-nowrap dark:text-white"
+                          >
+                            <a
+                              class="truncate"
+                              style="
+                                color: rgb(26 86 219);
+                                text-decoration: underline;
+                              "
+                              href="/scans/{{ scan.id }}"
+                            >
+                              Scan #{{ scan.id }}</a
+                            >
+                          </td>
+                          <td
+                            class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
+                          >
+                            {{ scan.created_at|date:"F d, Y H:i:s" }}
+                          </td>
+                          <td class="p-4 text-right">
+                            {% if scan.status == 'Pending' %}
+                            <span
+                              class="bg-orange-100 text-right text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100"
+                              >{{ scan.status }}</span
+                            >
+                            {% elif scan.status == 'Finished' %}
+                            <span
+                              class="bg-green-100 text-right text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100"
+                              >{{ scan.status }}</span
+                            >
+                            {% else %}
+                            <span
+                              class="bg-red-100 text-right text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100"
+                              >{{ scan.status }}</span
+                            >
+                            {% endif %}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+              >
+                <!-- Card header -->
+                <div class="items-center justify-between lg:flex">
+                  <div class="mb-4 lg:mb-0">
+                    <h3
+                      class="mb-2 text-xl font-bold text-gray-900 dark:text-white"
+                    >
+                      Whois
+                    </h3>
+                  </div>
+                </div>
+                <div
+                  class="mb-2 text-sm font-bold text-gray-900 dark:text-white"
+                >
+                  {% include 'components/whois.html' %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% include 'components/subdomains.html' %}
+          <div class="px-4 pt-4">
+            <div class="h-full w-full">
+              <div
+                class="p-4 h-full w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+              >
+                <!-- Card header -->
+                <div class="items-center w-full justify-between lg:flex">
+                  <div class="mb-4 lg:mb-0 w-full">
+                    <h3
+                      class="mb-2 text-2xl font-bold text-gray-900 dark:text-white"
+                    >
+                      Assets locations
+                    </h3>
+                    {% include 'components/map.html' %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- {% include 'includes/footer.html' %} -->
+        <p class="my-10 text-sm text-center text-gray-500">
+          <!-- &copy; 2023
+          <a
+            href="https://flowbite.com/"
+            class="hover:underline"
+            target="_blank"
+            >PwC.com</a
+          >. All rights reserved. -->
+        </p>
+      </div>
+    </div>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://flowbite-admin-dashboard.vercel.app/app.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
+  </body>
+</html>
