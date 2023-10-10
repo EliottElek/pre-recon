@@ -58,49 +58,6 @@ def amass(scan_id, target_id, target_ip):
 
 
 @shared_task
-def sublister(scan_id, target_id, target_ip):
-    logging.info(f'Starting SUBLISTER scan on {target_ip}')
-    scan = Scan.objects.get(id=scan_id)
-    command = f'python3 github/Sublist3r/sublist3r.py -d {target_ip}'
-    scan_history = ScanHistory(
-        scan=scan, name="Sublist3r scan", description=f'Started sublist3r scan for {target_ip}', status="Pending", command=command)
-    scan_history.save()
-    try:
-        logging.info(command)
-        process = subprocess.run(command, shell=True,
-                                 capture_output=True, text=True)
-        scan = Scan.objects.get(id=scan_id)
-        cpt = 0
-
-        for subdomain in process.stdout.split('\n'):
-            domain = extract_subdomains(target_ip, subdomain.strip())
-            if domain:
-                try:
-                    ip = ""
-                    try:
-                        ip = socket.gethostbyname(domain)
-                    except Exception as e:
-                        continue
-                    new_subdomain = Subdomain(
-                        target_id=target_id, domain_name=domain, source="sublister", ip_address=ip, ip_iso=get_country_code_from_ip(ip), is_interesting=is_interesting_subdomain(domain))
-                    new_subdomain.save()
-                    cpt += 1
-                except IntegrityError as e:
-                    logging.info(f'Subdomain {domain} already exists.')
-                    continue
-        scan_history.completed_at = timezone.now()
-        scan_history.status = "Finished"
-        scan_history.description = f'Found {cpt} new subdomains with sublister.'
-        scan_history.save()
-    except Exception as e:
-        logging.error(e)
-        scan_history.completed_at = timezone.now()
-        scan_history.status = "Error"
-        scan_history.description = e
-        scan_history.save()
-
-
-@shared_task
 def assetfinder(scan_id, target_id, target_ip):
     logging.info(f'Starting ASSETFINDER scan on {target_ip}')
     scan = Scan.objects.get(id=scan_id)

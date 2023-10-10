@@ -69,62 +69,57 @@
       class="absolute w-4 h-4 bg-gray-200 rounded-full mt-1.5 border border-white dark:border-gray-800 dark:bg-gray-700"
     ></div>
     {% endif %}
-
-    <time
-      class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-    >
-      {{ hist.started_at|date:"F d, Y H:i:s" }}
-    </time>
-    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-      {{ hist.name }}
-    </h3>
-    {% if hist.status == 'Error' %}
-    <span
-      class="bg-red-100 text-right text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 mt-2 rounded-md border border-red-100"
-    >
-      {{ hist.description }}
-    </span>
-    {% else %}
-    <p
-      class="text-right text-gray-400 dark:text-gray-500 text-xs font-medium py-2"
-    >
-      {{ hist.description }}
-    </p>
-    {% endif %} {% comment %}
-    <span
-      class="bg-gray-100 text-right text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-gray-100"
-    >
-      {{ hist.command }}
-    </span>
-    {% endcomment %}
     <div
-      style="max-width: 420px"
-      class="flex gap-4 items-center mt-2 justify-between"
+      class="bg-white dark:bg-gray-800 dark:border-gray-700 p-2 shadow border rounded-md"
     >
-      {% if hist.status == 'Pending' %}
+      <div style="gap: 4px" class="flex items-center">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+          {{ hist.name }}
+        </h3>
+        <time class="text-sm mt-1 font-normal text-gray-400 dark:text-gray-500">
+          {{ hist.started_at|date:"m/d, H:i" }}
+        </time>
+      </div>
+      {% if hist.status == 'Error' %}
       <span
-        class="bg-orange-100 text-right text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100"
-        >{{ hist.status }}</span
+        class="bg-red-100 text-right text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 mt-2 rounded-md border border-red-100"
       >
-      {% elif hist.status == 'Finished' %}
+        {{ hist.description }}
+      </span>
+      {% else %}
+      <p
+        class="text-right text-gray-400 dark:text-gray-500 text-xs font-medium py-2"
+      >
+        {{ hist.description }}
+      </p>
+      {% endif %} {% comment %}
       <span
-        class="bg-green-100 text-right text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100"
-        >{{ hist.status }}</span
+        class="bg-gray-100 text-right text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-gray-100"
       >
-      {% elif hist.status == 'Error' %}
-      <span
-        class="bg-red-100 text-right text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100"
-        >{{ hist.status }}</span
+        {{ hist.command }}
+      </span>
+      {% endcomment %}
+      <div
+        style="max-width: 420px"
+        class="flex gap-4 items-center mt-2 justify-between"
       >
-      {% endif %}
-
-      <span
-        style="opacity: 0.3"
-        class="border-b h-1border-gray-200 dark:border-gray-700 flex grow"
-      ></span>
-      <span style="opacity: 0.5" class="font-normal text-xs"
-        >{{hist.get_finished_in}}</span
-      >
+        {% if hist.status == 'Pending' %}
+        <span
+          class="bg-orange-100 text-right text-orange-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-orange-100"
+          >{{ hist.status }}</span
+        >
+        {% elif hist.status == 'Finished' %}
+        <span
+          class="bg-green-100 text-right text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-green-100"
+          >{{ hist.get_finished_in }}</span
+        >
+        {% elif hist.status == 'Error' %}
+        <span
+          class="bg-red-100 text-right text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md border border-red-100"
+          >{{ hist.status }}</span
+        >
+        {% endif %}
+      </div>
     </div>
   </li>
 

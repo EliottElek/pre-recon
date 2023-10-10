@@ -1,9 +1,8 @@
-from ipaddress import ip_address
 from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime
 from .models import *
 from .forms import DeleteScansForm, ScanForm, TargetForm
-from .tasks import amass, assetfinder, censys, subfinder, sublister, whois
+from .tasks import amass, assetfinder, censys, subfinder, whois
 import socket
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -103,9 +102,6 @@ def new_scan(request):
             scan_history.save()
 
             subfinder.apply_async(args=[
-                scan.id, target.id, target.domain_name
-            ])
-            sublister.apply_async(args=[
                 scan.id, target.id, target.domain_name
             ])
             amass.apply_async(args=[

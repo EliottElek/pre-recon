@@ -5,7 +5,7 @@ import re
 def is_interesting_subdomain(subdomain):
     # Define a list of common services/protocols
     common_services = ['mail', 'ftp', 'admin', 'vpn', 'test', 'dev', 'secure',
-                       'portal', 'backup', 'internal', 'legacy', 'api', 'intranet', 'owa']
+                       'portal', 'backup', 'internal', 'legacy', 'api', 'intranet', 'owa', 'git']
 
     # Check if any part of the subdomain contains a common service
     if any(service in subdomain for service in common_services):

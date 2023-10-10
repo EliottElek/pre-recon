@@ -137,8 +137,11 @@
         class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"
       >
         <main>
-          <div class="px-4 pt-4 grid grid-cols-2 gap-4">
-            <div class="h-full w-full">
+          <div class="px-4 pt-4 grid grid-cols-3 gap-4">
+            <div
+              style="grid-column: span 2 / span 2"
+              class="h-full w-full col-span-2"
+            >
               <div
                 class="p-4 h-full w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
               >
@@ -175,7 +178,7 @@
                 </div>
               </div>
             </div>
-            <div style="height: 100%" class="h-full">
+            <div style="height: 100%" class="h-full col-span-1">
               <div
                 class="p-4 bg-white border h-full border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
               >
@@ -190,8 +193,8 @@
                   </div>
                 </div>
                 <div
-                  style="max-height: 400px"
-                  class="mb-2 text-sm font-bold max-h-32 p-2 overflow-y-auto text-gray-900 dark:text-white"
+                  style="max-height: 470px"
+                  class="mb-2 bg-gray-50 p-4 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-bold overflow-y-auto text-gray-900 dark:text-white"
                 >
                   {% include 'components/scan-timeline.html' %}
                 </div>
@@ -213,6 +216,7 @@
         </p>
       </div>
     </div>
+
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://flowbite-admin-dashboard.vercel.app/app.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
