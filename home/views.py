@@ -112,7 +112,7 @@ def new_scan(request):
             ])
             scan_history.status = "Finished"
             scan_history.save()
-            return redirect("/")
+            return redirect(f'/scans/{scan.id}')
 
     else:
         form = ScanForm()

@@ -1,0 +1,3 @@
+[92mcentredoc.org[0m[94m (FQDN)[0m [97m-->[0m [95mnode[0m [97m-->[0m [92mprao.centredoc.org[0m[94m (FQDN)[0m
+[92mprao.centredoc.org[0m[94m (FQDN)[0m [97m-->[0m [95mcname_record[0m [97m-->[0m [92mpmbpro.net[0m[94m (FQDN)[0m
+[92mprao.centredoc.org[0m[94m (FQDN)[0m [97m-->[0m [95mmx_record[0m [97m-->[0m [92merp.pmbservices.fr[0m[94m (FQDN)[0m
