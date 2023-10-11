@@ -125,6 +125,7 @@
         class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"
       >
         <main>
+          <div class="px-4 pt-4">{% include 'components/stats.html' %}</div>
           <div class="px-4 pt-4">
             <div
               class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
@@ -135,7 +136,7 @@
                   <h3
                     class="mb-2 text-xl font-bold text-gray-900 dark:text-white"
                   >
-                    Scans ({{scans_length}})
+                    Scans
                   </h3>
                   <span
                     class="text-base font-normal text-gray-500 dark:text-gray-400"
@@ -167,16 +168,6 @@
                       <span class="sr-only">Delete</span>
                     </button>
                   </form> -->
-                  <div class="">
-                    <a href="/new-scan"
-                      ><button
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        type="button"
-                      >
-                        New scan
-                      </button></a
-                    >
-                  </div>
                 </div>
               </div>
               <!-- Table -->
@@ -347,7 +338,7 @@
               </div>
             </div>
           </div>
-          <div class="px-4 pt-6">
+          <div class="px-4 pt-4">
             <div
               class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
             >
@@ -357,27 +348,12 @@
                   <h3
                     class="mb-2 text-xl font-bold text-gray-900 dark:text-white"
                   >
-                    Targets ({{targets_length}})
+                    Targets
                   </h3>
                   <span
                     class="text-base font-normal text-gray-500 dark:text-gray-400"
                     >This is a list of all targets.</span
                   >
-                </div>
-                <div class="items-center sm:flex">
-                  <div class="">
-                    <a href="/new-target"
-                      ><button
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        type="button"
-                        data-drawer-target="drawer-form"
-                        data-drawer-show="drawer-form"
-                        aria-controls="drawer-form"
-                      >
-                        New target
-                      </button></a
-                    >
-                  </div>
                 </div>
               </div>
               <!-- Table -->

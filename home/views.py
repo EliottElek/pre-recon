@@ -24,6 +24,8 @@ def index(request):
         'scans_length': len(Scan.objects.all()),
         'targets': Target.objects.order_by("-created_at").prefetch_related('subdomains'),
         'targets_length': len(Target.objects.all()),
+        'subdomains_length': len(Subdomain.objects.all()),
+
     }
     # Scan.objects.all().delete()
     # Target.objects.all().delete()
@@ -112,7 +114,7 @@ def new_scan(request):
             ])
             scan_history.status = "Finished"
             scan_history.save()
-            return redirect(f'/scans/{scan.id}')
+            return redirect(f'/')
 
     else:
         form = ScanForm()
