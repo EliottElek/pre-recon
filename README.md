@@ -1,1 +1,1 @@
-# recon-ui
+# recon-django
